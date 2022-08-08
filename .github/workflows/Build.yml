@@ -33,7 +33,7 @@ jobs:
       - name: TWRP Device Tree Generate
         run: |
          ls
-         python -m twrpdtgen boot.img
+         python -m twrpdtgen recovery.img
          
       - uses: actions/upload-artifact@v2
         with:
