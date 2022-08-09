@@ -41,8 +41,21 @@ jobs:
       - name: TWRP Device Tree Generate
         run: |
          ls
-         python -m twrpdtgen frd.img
-         
+         python -m twrpdtgen recovery.img
+ 
+      - name: build
+        uses: github-actions-x/hugo@master
+      - name: push
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'master'
+          commit-message: 'publish'
+          force-add: 'true'
+          files: output/*
+          name: Pinkdoge
+          email: 42758990+Pinkdoge@users.noreply.github.com 
+        
       - uses: actions/upload-artifact@v2
         with:
           name: Twrp Device Tree
