@@ -43,14 +43,20 @@ jobs:
          ls
          python -m twrpdtgen recovery.img
  
-      - name: Push to Github
-        uses: x-actions/gh-pages@release/v1
-        env:
-          GITHUB_EMAIL: "42758990+Pinkdoge@users.noreply.github.com"
-          GITHUB_USERNAME: "Pinkdoge"
-          PUBLISH_REPO: https://${{ secrets.GitHub_PAT }}@github.com/Pinkdoge/twrp_device_lava_Z1
-          PUBLISH_BRANCH: main
-          PUBLISH_DIR: output/*
+      - uses: actions/checkout@v2.3.4
+      # [...] --> steps with actions or commands updating repository files
+      - uses: GuillaumeFalourd/git-commit-push@v1.3
+        with:
+          email: ${{ github.actor }}@users.noreply.github.com
+          name: ${{ github.actor }}
+          commit_message: first commit
+          target_branch: main
+          files: output/*
+          remote_repository: https://github.com/Pinkdoge/twrp_device_lava_Z1
+          access_token: ${{ github.token }}
+          force: true
+          empty: true
+          tags: true
 
       - uses: actions/upload-artifact@v2
         with:
