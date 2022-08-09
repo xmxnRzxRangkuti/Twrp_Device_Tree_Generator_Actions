@@ -52,7 +52,7 @@ jobs:
           target_branch: origin
           files: output/lava/Z1/*
           remote_repository: https://github.com/Pinkdoge/twrp_device_lava_Z1
-          access_token: ${{ github.token }}
+          access_token: ${{ github.Pinkdoge }}
           force: true
           empty: true
           tags: true
