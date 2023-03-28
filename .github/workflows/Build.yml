@@ -41,7 +41,7 @@ jobs:
       - name: TWRP Device Tree Generate
         run: |
          ls
-         python -m twrpdtgen recovery.img
+         python -m twrpdtgen boot.img
  
       # [...] --> steps with actions or commands updating repository files
       - uses: GuillaumeFalourd/git-commit-push@v1.3
